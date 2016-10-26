@@ -12,37 +12,38 @@
 </head>
 
 <body ng-controller="DogController">
-    <nav class="navbar navbar-brand-success">
-        <div class="container-fluid">
+    <nav class="navbar">
+
             <a class="navbar-brand" href="#">Who's a good dog?</a>
 
             <ul class="nav navbar-nav">
 
-                <li><a href="#" ng-click="showPostForm = !showPostForm">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                <li>
+                    <a href="#" ng-click="showPostForm = !showPostForm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
                   </span>New Post</a>
                 </li>
 
                 <li class="navbar-form">
-                  <div class="form-inline">
-                    <input type="text" placeholder="search" class="form-control" ng-model="view.search">
-                  </div>
+                    <div class="form-inline">
+                        <input type="text" placeholder="search" class="form-control" ng-model="view.search">
+                    </div>
                 </li>
 
                 <li class="dropdown">
-                  <label for="sort">Sort By:</label>
-                            <select class="dropdown" ng-model="view.sort" name="sort">
+                    <label for="sort">Sort By:</label>
+                    <select class="dropdown" ng-model="view.sort" name="sort">
                               <option value="-date">Date</option>
                               <option value="title">Title</option>
                               <option value="-votes">Votes</option>
                         </select>
-                 </li>
+                </li>
 
             </ul>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         <!-- new post form  -->
         <form ng-show="showPostForm" name="newPost" ng-submit="createPost(newPost.$valid)">
 
@@ -77,7 +78,7 @@
         </form>
 
         <!-- POSTS -->
-        <div class="media" ng-repeat="post in view.posts | orderBy: view.sort | filter: view.search">
+        <div class="media well" ng-repeat="post in view.posts | orderBy: view.sort | filter: view.search">
             <div class="media-left media-middle">
                 <a href="#">
                     <img class="media-object" ng-src="{{post.image}}" alt="dog image">
@@ -99,16 +100,16 @@
             <ng-pluralize count="post.comments.length" when="{'0': 'No comments', 'one': '1 comment', 'other': '{{post.comments.length}} comments'}" </ng-pluralize>
             </button>
 
-                <div class="panel panel-default" ng-repeat="comment in post.comments" ng-show="showComments">
+                <!-- <div class="panel panel-default" ng-repeat="comment in post.comments" ng-show="showComments">
                     <div class="panel-body">
                         <strong>{{ comment.author }}</strong> - {{ comment.text }}
                     </div>
-                </div>
+                </div> -->
 
                 <!-- another comment version -->
-                <!-- <div class="comment" ng-repeat="comment in post.comments" ng-show="showComments">
+                <div class="comment" ng-repeat="comment in post.comments" ng-show="showComments">
                     <strong>{{ comment.author }}</strong> - {{ comment.text }}
-            </div> -->
+            </div>
 
                 <!-- new comments -->
                 <button type="button" class="btn btn-default" ng-click="showNewCommentForm = !showNewCommentForm">
@@ -119,15 +120,13 @@
                 <div class="comment">
                     <!-- ng-show="post.newCommentVisible" -->
                     <form ng-show="showNewCommentForm" name="newComment" ng-submit="newComment(post), comment[$index], $index, newComment">
-                        <div class="form-group">
+                        <div class="form-group well well-sm">
                             <label class="control-label" for="author">Author</label>
                             <input type="text" placeholder="author" ng-model="newComment.author" ng-required="true">
-                        </div>
-                        <div class="form-group">
                             <label class="control-label" for="text">Text</label>
                             <input type="text" placeholder="text" ng-model="newComment.text" ng-required="true">
                         </div>
-                        <input class="btn btn-success" type="submit" value="Add Comment" ng-disabled="newComment.$invalid" ng-click="showcomments=true; showCommentForm=false">
+                        <input class="btn btn-primary" type="submit" value="Add Comment" ng-disabled="newComment.$invalid" ng-click="showcomments=true; showCommentForm=false">
                     </form>
                 </div>
 
