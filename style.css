@@ -1,15 +1,24 @@
-.container-fluid {
+/*.postContainer.container-fluid {
   background-color: #E4E2E6
-}
+}*/
 
 .dropdown {
-  padding-top: 3.75%
+  padding-top: 3.75%;
+  color: #337AB7
 }
 
 div.media.well {
   background-color: #F6F3FD
 }
 
-body {
-  background-color: #EDF0FE
+.positive {
+    color: #369EAB;
+}
+
+.neutral {
+    color: #B89757;
+}
+
+.negative {
+    color: #962521;
 }

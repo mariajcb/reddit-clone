@@ -13,7 +13,7 @@
 
 <body ng-controller="DogController">
     <nav class="navbar">
-
+      <div class="navContainer container-fluid">
             <a class="navbar-brand" href="#">Who's a good dog?</a>
 
             <ul class="nav navbar-nav">
@@ -21,7 +21,7 @@
                 <li>
                     <a href="#" ng-click="showPostForm = !showPostForm">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                  </span>New Post</a>
+                  </span><strong>New Post</strong></a>
                 </li>
 
                 <li class="navbar-form">
@@ -43,7 +43,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="postContainer container-fluid">
         <!-- new post form  -->
         <form ng-show="showPostForm" name="newPost" ng-submit="createPost(newPost.$valid)">
 
@@ -90,9 +90,8 @@
             <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="minusOne(post)"></a>
             <span ng-class="votes(post)"> {{post.votes}} </span>
             </h4>
-                <p> By: {{post.author}} </p>
+                <p> By: {{post.author}} | <span class="glyphicon glyphicon-calendar"></span> {{ post.dateMoment }}</p>
                 <p>{{post.description}}</p>
-                <p> <span class="glyphicon glyphicon-calendar"></span> {{ post.date }} </p>
 
                 <!-- comments -->
                 <button type="button" class="btn btn-default" ng-click="showComments = !showComments">
