@@ -39,7 +39,11 @@
             </a>
         </div>
         <div class="media-body">
-            <h4 class="media-heading">{{post.title}}</h4>
+            <h4 class="media-heading">{{post.title}}
+            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="plusOne(post)"></a>
+            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="minusOne(post)"></a>
+            <span ng-class="votes(post)"> {{post.votes}} </span>
+            </h4>
             <p> By: {{post.author}} </p>
             <p>{{post.description}}</p>
             <p> <span class="glyphicon glyphicon-calendar"></span> {{ post.date }} </p>

@@ -45,6 +45,16 @@ app.controller('DogController', function($scope) {
         comments: []
     }]
 
+    //VOTES
+    $scope.plusOne = function(post) {
+        post.votes += 1
+    }
+
+    $scope.minusOne = function(post) {
+        post.votes -= 1
+    }
+
+
     //COMMENTS
     $scope.newComment = {};
 
