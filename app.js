@@ -45,6 +45,18 @@ app.controller('DogController', function($scope) {
         comments: []
     }]
 
+    $scope.createPost = function(post) {
+        event.preventDefault()
+        if (post) {
+            post.comments = []
+            post.date = moment().calendar()
+            post.votes = 0
+            $scope.view.posts.push($scope.post)
+            $scope.post = ''
+            $scope.newPost.$setPristine()
+        }
+    }
+
     //COMMENTS
     $scope.newComment = {};
 
