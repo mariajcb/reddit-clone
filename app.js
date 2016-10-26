@@ -9,7 +9,7 @@ app.controller('DogController', function($scope) {
         image: "https://static.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317-medium.jpeg",
         description: "Get a load of that dog!",
         date: moment().subtract(1, 'days').calendar(),
-        votes: 2,
+        votes: 4,
         comments: [{
             author: "Balto",
             text: "How would this dog even survive in the wild?"
@@ -33,7 +33,7 @@ app.controller('DogController', function($scope) {
         image: "https://static.pexels.com/photos/164186/pexels-photo-164186-medium.jpeg",
         description: "Get a load of that dog!",
         date: moment().subtract(1, 'days').calendar(),
-        votes: 2,
+        votes: 3,
         comments: []
     }, {
         title: "O_O",
@@ -41,7 +41,7 @@ app.controller('DogController', function($scope) {
         image: "https://static.pexels.com/photos/60254/pexels-photo-60254-medium.jpeg",
         description: "Get a load of that dog!",
         date: moment().subtract(1, 'days').calendar(),
-        votes: 2,
+        votes: -1,
         comments: []
     }]
 
@@ -56,7 +56,7 @@ app.controller('DogController', function($scope) {
             $scope.newPost.$setPristine()
         }
     }
-    
+
     //VOTES
     $scope.plusOne = function(post) {
         post.votes += 1
@@ -78,5 +78,7 @@ app.controller('DogController', function($scope) {
         }
     }
 
+    //SORTING
+    $scope.view.sort = "-votes"
 
 })
