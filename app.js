@@ -79,6 +79,8 @@ app.controller('DogController', function($scope) {
     }
 
     //SORTING
-    $scope.view.sort = "-votes"
+    $scope.view.sort = ""
 
+    //SEARCH
+    $scope.filter = ""
 })
