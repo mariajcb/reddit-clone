@@ -22,3 +22,11 @@ div.media.well {
 .negative {
     color: #962521;
 }
+
+.ng-enter {
+  animation: fadeInRight .6s;
+}
+
+.ng-leave {
+  animation: fadeOutRight .6s;
+}

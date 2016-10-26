@@ -1,4 +1,4 @@
-var app = angular.module('goodDog', []);
+var app = angular.module('goodDog', ['ngAnimate']);
 
 app.controller('DogController', function($scope) {
 
