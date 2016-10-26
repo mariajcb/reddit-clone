@@ -45,13 +45,13 @@ app.controller('DogController', function($scope) {
         comments: []
     }]
 
-    $scope.createPost = function(post) {
+    $scope.createPost = function(post, newPost) {
         event.preventDefault()
         if (post) {
             post.comments = []
             post.date = moment().calendar()
             post.votes = 0
-            $scope.view.posts.push($scope.post)
+            $scope.view.posts.push($scope.view.post)
             $scope.post = ''
             $scope.newPost.$setPristine()
         }

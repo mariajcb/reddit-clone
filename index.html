@@ -42,23 +42,27 @@
       <small ng-show="newPost.title.$error.minlength" class="help-block">Title is too short.</small>
       <small ng-show="newPost.title.$error.maxlength" class="help-block">Title is too long.</small>
     </div>
+
     <div class="form-group" ng-class="{'has-error' : newPost.author.$invalid && !newPost.author.$pristine,'has-success' : newPost.author.$valid }">
       <label class="control-label" for="author">Author:</label>
       <input type="text" name="author" class="form-control" ng-model="post.author" ng-minlength="2" ng-maxlength="18" ng-required="true" placeholder="Author">
       <small ng-show="newPost.author.$error.minlength" class="help-block">Author is too short.</small>
       <small ng-show="newPost.author.$error.maxlength" class="help-block">Author is too long.</small>
     </div>
+
     <div class="form-group" ng-class="{'has-error' : newPost.image.$invalid && !newPost.image.$pristine,'has-success' : newPost.imgURL.$valid }">
       <label class="control-label" for="image">Image URL:</label>
       <input type="url" name="image" class="form-control" ng-model="post.image" ng-required="true" placeholder="Image URL">
       <small ng-show="newPost.image.$invalid && !newPost.image.$pristine" class="help-block">URL is invalid.</small>
     </div>
+
     <div class="form-group" ng-class="{'has-error' : newPost.description.$invalid && !newPost.description.$pristine,'has-success' : newPost.description.$valid }">
       <label class="control-label" for="description">Description:</label>
       <input type="text" name="description" class="form-control" ng-model="post.description" ng-minlength="10" ng-maxlength="2000" ng-required="true" placeholder="Description">
       <small ng-show="newPost.description.$error.minlength" class="help-block">Description is too short.</small>
       <small ng-show="newPost.description.$error.maxlength" class="help-block">Description is too long.</small>
     </div>
+    
     <button type="submit" class="btn btn-default" ng-disabled="newPost.$invalid" ng-click="showPostForm=false">Submit</button>
   </form>
 
