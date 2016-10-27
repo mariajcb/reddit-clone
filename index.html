@@ -38,8 +38,8 @@
                     <select class="dropdown" ng-model="view.sort" name="sort">
                               <option value="-date">Newest to Oldest</option>
                               <option value="date">Oldest to Newest</option>
-                              <option value="-votes">Most to Least Votes</option>
-                              <option value="votes">Least to Most Votes</option>
+                              <option value="-votes">Highest to Lowest Votes</option>
+                              <option value="votes">Lowest to Highest Votes</option>
                               <option value="title">Title</option>
                         </select>
                 </li>
@@ -50,7 +50,7 @@
 
     <div class="postContainer container-fluid">
         <!-- new post form  -->
-        <form ng-show="showPostForm" name="newPost" ng-submit="createPost(newPost.$valid)">
+        <form ng-show="showPostForm" name="newPostForm" ng-submit="createPost(newPostForm.$valid)">
 
             <div class="form-group" ng-class="{'has-error' : newPost.title.$invalid && !newPost.title.$pristine,'has-success' : newPost.title.$valid }">
                 <label class="control-label" for="title">Title:</label>
@@ -79,7 +79,7 @@
                 <small ng-show="newPost.description.$error.maxlength" class="help-block">Description is too long.</small>
             </div>
 
-            <button type="submit" class="btn btn-default" ng-disabled="newPost.$invalid" ng-click="showPostForm=false">Submit</button>
+            <button type="submit" class="btn btn-default" ng-disabled="newPostForm.$invalid" ng-click="showPostForm=false">Submit</button>
         </form>
 
         <!-- POSTS -->
@@ -121,9 +121,8 @@
                 </button>
 
                 <!-- comment form -->
-                <div class="comment">
-                    <!-- ng-show="post.newCommentVisible" -->
-                    <form ng-show="showNewCommentForm" name="newComment" ng-submit="newComment(post), comment[$index], $index, newComment">
+                <!-- <div class="comment">
+                    <form ng-show="showNewCommentForm" name="newComment" ng-submit="newComment(post, newComment)">
                         <div class="form-group well well-sm">
                             <label class="control-label" for="author">Author</label>
                             <input type="text" placeholder="author" ng-model="newComment.author" ng-required="true">
@@ -132,7 +131,20 @@
                         </div>
                         <input class="btn btn-primary" type="submit" value="Add Comment" ng-disabled="newComment.$invalid" ng-click="showcomments=true; showCommentForm=false">
                     </form>
-                </div>
+                </div> -->
+
+
+        <div class="comment">
+          <form ng-show="showNewCommentForm" class="form-inline" ng-submit="addComment(post, newComment)">
+            <div class="form-group well well-sm">
+              <label for="author">Author</label>
+              <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
+              <label for="text">Text</label>
+              <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Add Comment" ng-disabled="newComment.$invalid" ng-click="showcomments=true; showCommentForm=false">
+          </form>
+        </div>
 
             </div>
         </div>

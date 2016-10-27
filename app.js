@@ -43,20 +43,37 @@ app.controller('DogController', function($scope) {
         description: "Get a load of that dog!",
         date: new Date('December 7, 2016 03:24:00'),
         dateMoment: moment().subtract(1, 'days').calendar(),
-        votes: -1,
+        votes: 1,
         comments: []
-    }]
+    }, {
+        title: "asdfkj;l",
+        author: "Dogshamers Anonymous",
+        image: "https://dl.dropboxusercontent.com/u/60720250/dogshaming.png",
+        description: "Get a load of that dog!",
+        date: new Date('December 3, 2016 03:24:00'),
+        dateMoment: moment().subtract(1, 'days').calendar(),
+        votes: -1,
+        comments: [{
+            author: "Buddy Clinton",
+            text: "This is a serious problem in our community and you should not make fun of it."
+        }]
+    }
+  ]
 
-    $scope.createPost = function(post, newPost) {
-        event.preventDefault()
-        if (post) {
-            post.comments = []
-            post.dateMoment = moment().calendar()
-            post.votes = 0
-            $scope.view.posts.push($scope.view.post)
-            $scope.post = ''
-            $scope.newPost.$setPristine()
-        }
+    $scope.createPost = function() {
+        let newPost = {};
+
+        newPost.title = $scope.post.title;
+        newPost.author = $scope.post.author;
+        newPost.image = $scope.post.image;
+        newPost.description = $scope.post.description;
+        newPost.dateMoment = moment().calendar();
+        newPost.votes = 0;
+        newPost.comments = [];
+
+        $scope.view.posts.push(newPost);
+
+        $scope.newPostForm.$setPristine();
     }
 
     //VOTES
@@ -81,14 +98,12 @@ app.controller('DogController', function($scope) {
     //COMMENTS
     $scope.newComment = {};
 
-    $scope.newComment = function(post, comment, index, newComment) {
-        event.preventDefault()
-        if (comment) {
-            post.comments.push(comment)
-            $scope.comment[index] = null
-            newComment.$setPristine()
+    $scope.addComment = function(post, comment) {
+        if (comment.author && comment.text) {
+            post.comments.push(comment);
+            $scope.newComment = {};
         }
-    }
+    };
 
     //SORTING
     $scope.view.sort = ""
