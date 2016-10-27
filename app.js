@@ -57,8 +57,8 @@ app.controller('DogController', function($scope) {
             author: "Buddy Clinton",
             text: "This is a serious problem in our community and you should not make fun of it."
         }]
-    }
-  ]
+    }]
+
 
     $scope.createPost = function() {
         let newPost = {};
@@ -70,9 +70,8 @@ app.controller('DogController', function($scope) {
         newPost.dateMoment = moment().calendar();
         newPost.votes = 0;
         newPost.comments = [];
-
         $scope.view.posts.push(newPost);
-
+        $scope.post = {};
         $scope.newPostForm.$setPristine();
     }
 
@@ -98,9 +97,9 @@ app.controller('DogController', function($scope) {
     //COMMENTS
     $scope.newComment = {};
 
-    $scope.addComment = function(post, comment) {
-        if (comment.author && comment.text) {
-            post.comments.push(comment);
+    $scope.addComment = function(post, newComment) {
+        if (newComment.author && newComment.text) {
+            post.comments.push(newComment);
             $scope.newComment = {};
         }
     };
